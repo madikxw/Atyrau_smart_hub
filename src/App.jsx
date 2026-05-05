@@ -731,6 +731,67 @@ footer a { color: #4AAAE0; text-decoration: none; }
   .job-card { flex-direction: column; }
   .apply-btn { width: 100%; justify-content: center; }
 }
+
+@media (max-width: 520px) {
+  .nav { padding: 0 14px; }
+  .nav-logo { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .nav-links { flex-wrap: wrap; gap: 6px; }
+  .nav-btn { padding: 8px 10px; font-size: 12px; }
+
+  .page { padding: 20px 14px 70px; }
+  .hero { padding: 24px 18px; }
+  .hero h1 { font-size: 28px; }
+  .hero-desc { font-size: 14px; }
+  .hero-actions { flex-direction: column; gap: 10px; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary { width: 100%; justify-content: center; }
+
+  .stats-row,
+  .proj-grid,
+  .dash-grid,
+  .eco-grid,
+  .aqi-grid,
+  .partner-grid { grid-template-columns: 1fr; }
+
+  .proj-card,
+  .fp-card,
+  .dash-panel,
+  .aqi-item,
+  .bw,
+  .job-card { width: 100%; }
+
+  .job-meta { flex-wrap: wrap; gap: 8px; }
+  .tags { gap: 6px; }
+  .apply-btn { width: 100%; }
+
+  .sec-hd { gap: 10px; }
+  .sec-title { font-size: 18px; }
+  .sec-sub { font-size: 14px; }
+
+  footer { text-align: center; }
+  footer .f-brand,
+  footer .f-dot { display: block; margin: 4px 0; }
+}
+
+@media (max-width: 420px) {
+  .nav { padding: 12px; }
+  .nav-logo-mark { width: 28px; height: 28px; }
+  .nav-logo-text { font-size: 16px; }
+
+  .hero { padding: 20px 14px; }
+  .hero h1 { font-size: 24px; }
+  .hero-desc { font-size: 13px; }
+
+  .proj-card,
+  .fp-card,
+  .dash-panel,
+  .aqi-item,
+  .job-card { padding: 16px; }
+
+  .chart-panel,
+  .prog-track,
+  .aqi-bar-track { min-height: auto; }
+}
 `;
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
@@ -901,24 +962,27 @@ function EcoPage() {
         sub="Мониторинг Атырауской области в реальном времени"
       />
 
-      {/* MAP */}
-      <div className="eco-map-wrap">
-        <div className="eco-map-grid" />
-        {/* Red pin - industrial */}
-        <div className="eco-pin" style={{ left:"38%", top:"54%", background:"#E05A4E" }} />
-        <div className="eco-pin-pulse" style={{ left:"38%", top:"54%", borderColor:"rgba(224,90,78,.35)" }} />
-        <div className="eco-map-lbl" style={{ left:"42%", top:"47%" }}>🏭 Пром. зона · AQI 120</div>
-        {/* Amber pin - center */}
-        <div className="eco-pin" style={{ left:"53%", top:"38%", background:"#C47A15" }} />
-        <div className="eco-pin-pulse" style={{ left:"53%", top:"38%", borderColor:"rgba(196,122,21,.35)", animationDelay:".6s" }} />
-        <div className="eco-map-lbl" style={{ left:"57%", top:"31%" }}>🏛 Центр · AQI 85</div>
-        {/* Teal pin - residential */}
-        <div className="eco-pin" style={{ left:"67%", top:"62%", background:"#0B9E75" }} />
-        <div className="eco-pin-pulse" style={{ left:"67%", top:"62%", borderColor:"rgba(11,158,117,.35)", animationDelay:"1.2s" }} />
-        <div className="eco-map-lbl" style={{ left:"71%", top:"55%" }}>🏘 Жилой · AQI 70</div>
-        <div style={{ position:"absolute", bottom:12, left:"50%", transform:"translateX(-50%)", fontSize:11, color:"var(--text-muted)", fontWeight:500 }}>
-          Карта датчиков Атырауской области
-        </div>
+      {/* DEMO SVG MAP */}
+      <div style={{ width: "100%", maxWidth: 420, margin: "0 auto" }}>
+        <svg viewBox="0 0 420 260" width="100%" height="auto" style={{ borderRadius: 24, background: "#F7FAFF", boxShadow: "0 2px 12px #0001" }}>
+          {/* Контур области (упрощённая форма) */}
+          <path
+            d="M40,220 Q30,120 80,60 Q120,20 200,30 Q320,40 370,120 Q400,180 340,230 Q220,250 120,240 Q60,230 40,220 Z"
+            fill="#E3F2FD"
+            stroke="#90CAF9"
+            strokeWidth="3"
+          />
+          {/* Датчики */}
+          <circle cx="120" cy="140" r="10" fill="#FFD600" stroke="#FFF" strokeWidth="3" />
+          <circle cx="200" cy="90" r="10" fill="#FF5252" stroke="#FFF" strokeWidth="3" />
+          <circle cx="300" cy="180" r="10" fill="#00E676" stroke="#FFF" strokeWidth="3" />
+          {/* Подписи */}
+          <text x="120" y="135" fontSize="13" fontWeight="bold" fill="#333" textAnchor="middle">Центр</text>
+          <text x="200" y="85" fontSize="13" fontWeight="bold" fill="#333" textAnchor="middle">Пром. зона</text>
+          <text x="300" y="175" fontSize="13" fontWeight="bold" fill="#333" textAnchor="middle">Жилой</text>
+          {/* Легенда */}
+          <text x="210" y="250" fontSize="15" fill="#90CAF9" textAnchor="middle">Демо-карта Атырауской области</text>
+        </svg>
       </div>
 
       {/* ECO CARDS */}
