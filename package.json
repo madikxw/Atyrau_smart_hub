@@ -2,7 +2,7 @@
   "name": "atyrau-smart-hub",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://<madikxw>.github.io/Atyrau_smart_hub",
+  "homepage": "https://madikxw.github.io/Atyrau_smart_hub",
   "type": "module",
   "scripts": {
     "dev": "vite",
